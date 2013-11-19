@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>JgFramework Web Test</title>
+<meta charset="utf-8" />
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.json.js"></script>
+<script type="text/javascript" src="js/jquery.websocket.js"></script>
+</head>
+<body>
+<h2 id="wait_info" style="display: none">您当前正排在第<span id="wait_no"></span>位</h2>
+<div id="login_area" style="margin-left:40%">
+	<h2>登陆</h2>
+	<form id="loginform" method="post" action="">
+		用户名:<input name="username" type="text" value=""> <br/><br/>
+		密 码:<input name="password" type="password" value="123456">&nbsp;&nbsp;
+		<input id="login" type="button" value="登陆">
+	</form>
+</div>
+<div id="regist_area" style="margin-left:40%">
+	<h2>注册</h2>
+	<form id="registform" method="post" action="">
+		用户名:<input name="username" type="text" value=""><br/><br/>
+		用户昵称:<input name="nickname" type="text" value=""><br/><br/>
+		密 码:<input name="password" type="password" value="">&nbsp;&nbsp;
+		<input id="regist" type="button" value="注册">
+	</form>
+</div>
+<div id="msg_area" style="display: none;">
+	<div style="width:26%;float:left;margin-left:23%">
+		<h2>登录用户：<span id="player_info"></span></h2><br/>
+		等级：<span id="player_info_level"></span><br/>
+		血量：<span id="player_info_totalHp"></span><br/>
+		经验：<span id="player_info_experience"></span><br/>
+		技能：<span id="player_info_actions"></span><br/>
+		<h2>PK</h2>
+		在线用户：<select id="online_user"></select> 
+		<input type="button" value="刷新" onclick="socket.send('onlineuser','');">  
+		<input type="button" value="决斗" id="duel">
+	</div>	
+	<div style="float: left;width: 49%">
+		<h2>消息</h2>
+		<form onsubmit="return false;">
+			<input type="hidden" name="handler" value="sendmsg">
+			<!-- handler: <input type="text" name="handler" value="test.test" /><br/><br/> -->
+			&nbsp;&nbsp;&nbsp;msg&nbsp;&nbsp;: <input type="text" name="message" value="" />&nbsp;
+			<input type="button" value="Send Web Socket Data" onclick="send(this.form.handler.value, this.form.message.value)" />&nbsp;<input id="logout" type="button" value="退出" />
+			<h3>Output</h3>
+			<textarea id="responseText" style="width: 500px; height: 500px;"></textarea>
+		</form>
+	</div>
+</div>	
+
+<div id="pk_area" style="display: none">
+	<div style="width:26%;float:left;margin-left:10%">
+		<h2>PK用户：<span id="player_me" player_id=""></span></h2><br/>
+		等级：<span id="player_me_level"></span><br/>
+		血量：<span id="player_me_totalHp"></span><br/>
+		经验：<span id="player_me_experience"></span><br/>
+		技能：<span id="player_me_actions"></span><br/>
+	</div>	
+	<div style="float: left;width: 26%">
+		<h2>消息</h2>
+		<textarea id="pk_responseText" style="width:100%; height: 500px;"></textarea>
+	</div>
+	<div style="width:26%;float:left;margin-left:10%">
+		<h2>PK用户：<span id="player_target"  player_id=""></span></h2><br/>
+		等级：<span id="player_target_level"></span><br/>
+		血量：<span id="player_target_totalHp"></span><br/>
+		经验：<span id="player_target_experience"></span><br/>
+		技能：<span id="player_target_actions"></span><br/>
+	</div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/main.js"></script>
