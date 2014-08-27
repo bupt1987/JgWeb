@@ -7,3 +7,6 @@
 /target
 .svn
 .myeclipse/
+
+.idea/
+JgWeb.iml

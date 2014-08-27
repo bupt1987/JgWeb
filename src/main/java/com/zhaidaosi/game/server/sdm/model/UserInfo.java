@@ -16,73 +16,73 @@ import com.zhaidaosi.game.jgframework.common.sdm.BaseModel;
 @Table(name = "user_info", catalog = "jgframework", uniqueConstraints = @UniqueConstraint(columnNames = "uid"))
 public class UserInfo extends BaseModel {
 
-	// Fields
+    // Fields
 
-	private Integer uid;
-	private String nickname;
-	private Integer level;
-	private Integer experience;
-	private String actions;
+    private Integer uid;
+    private String nickname;
+    private Integer level;
+    private Integer experience;
+    private String actions;
 
-	// Constructors
+    // Constructors
 
-	/** default constructor */
-	public UserInfo() {
-	}
+    /** default constructor */
+    public UserInfo() {
+    }
 
-	/** full constructor */
-	public UserInfo(Integer uid, String nickname, Integer level, Integer experience, String actions) {
-		this.uid = uid;
-		this.nickname = nickname;
-		this.level = level;
-		this.experience = experience;
-		this.actions = actions;
-	}
+    /** full constructor */
+    public UserInfo(Integer uid, String nickname, Integer level, Integer experience, String actions) {
+        this.uid = uid;
+        this.nickname = nickname;
+        this.level = level;
+        this.experience = experience;
+        this.actions = actions;
+    }
 
-	@Id
-	@Column(name = "uid", unique = true, nullable = false)
-	public Integer getUid() {
-		return this.uid;
-	}
+    @Id
+    @Column(name = "uid", unique = true, nullable = false)
+    public Integer getUid() {
+        return this.uid;
+    }
 
-	public void setUid(Integer uid) {
-		this.uid = uid;
-	}
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
-	@Column(name = "nickname", nullable = false, length = 30)
-	public String getNickname() {
-		return this.nickname;
-	}
+    @Column(name = "nickname", nullable = false, length = 30)
+    public String getNickname() {
+        return this.nickname;
+    }
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
-	@Column(name = "level", nullable = false)
-	public Integer getLevel() {
-		return this.level;
-	}
+    @Column(name = "level", nullable = false)
+    public Integer getLevel() {
+        return this.level;
+    }
 
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
-	@Column(name = "experience", nullable = false)
-	public Integer getExperience() {
-		return this.experience;
-	}
+    @Column(name = "experience", nullable = false)
+    public Integer getExperience() {
+        return this.experience;
+    }
 
-	public void setExperience(Integer experience) {
-		this.experience = experience;
-	}
+    public void setExperience(Integer experience) {
+        this.experience = experience;
+    }
 
-	@Column(name = "actions", nullable = false, length = 65535)
-	public String getActions() {
-		return this.actions;
-	}
+    @Column(name = "actions", nullable = false, length = 65535)
+    public String getActions() {
+        return this.actions;
+    }
 
-	public void setActions(String actions) {
-		this.actions = actions;
-	}
+    public void setActions(String actions) {
+        this.actions = actions;
+    }
 
 }

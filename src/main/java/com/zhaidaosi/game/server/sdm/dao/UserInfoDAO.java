@@ -11,22 +11,22 @@ import com.zhaidaosi.game.jgframework.common.sdm.BaseDao;
  * can be augmented to handle user-managed Spring transactions. Each of these
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
- * 
+ *
  * @see com.zhaidaosi.game.server.sdm.dao.UserInfo
  * @author MyEclipse Persistence Tools
  */
 @Repository
 public class UserInfoDAO extends BaseDao {
-	// property constants
-	public static final String UID = "uid";
-	public static final String NICKNAME = "nickname";
-	public static final String LEVEL = "level";
-	public static final String EXPERIENCE = "experience";
-	public static final String ACTIONS = "actions";
+    // property constants
+    public static final String UID = "uid";
+    public static final String NICKNAME = "nickname";
+    public static final String LEVEL = "level";
+    public static final String EXPERIENCE = "experience";
+    public static final String ACTIONS = "actions";
 
-	public UserInfoDAO(){
-		super.setTableName("user_info");
-		super.setModelName("UserInfo");
-	}
-	
+    public UserInfoDAO() {
+        super.setTableName("user_info");
+        super.setModelName("UserInfo");
+    }
+
 }

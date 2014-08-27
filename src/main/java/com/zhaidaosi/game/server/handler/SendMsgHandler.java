@@ -14,20 +14,20 @@ import com.zhaidaosi.game.server.model.player.Player;
 
 public class SendMsgHandler extends BaseHandler {
 
-	@Override
-	public IBaseMessage run(InMessage im, Channel ch) {
-		Object msg = im.getMember("msg");
-		if(msg == null || msg.equals("")){
-			return OutMessage.showError("msg 不能为空");
-		}
-		
-		Player player = (Player)ch.getAttachment();
-		IBaseArea area = player.gArea();
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("msg", msg);
-		map.put("player", player);
-		area.getChannelGroup().write(OutMessage.showSucc(map, this.handlerName));
-		return null;
-	}
+    @Override
+    public IBaseMessage run(InMessage im, Channel ch) {
+        Object msg = im.getMember("msg");
+        if (msg == null || msg.equals("")) {
+            return OutMessage.showError("msg 不能为空");
+        }
+
+        Player player = (Player) ch.getAttachment();
+        IBaseArea area = player.gArea();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("msg", msg);
+        map.put("player", player);
+        area.getChannelGroup().write(OutMessage.showSucc(map, this.handlerName));
+        return null;
+    }
 
 }

@@ -12,23 +12,23 @@ import com.zhaidaosi.game.server.sdm.model.UserInfo;
 import com.zhaidaosi.game.server.sdm.service.UserInfoService;
 
 public class InitHandler extends BaseHandler {
-	
-	UserInfoService userInfoService = (UserInfoService) ServiceManager.getService(UserInfoService.BEANID);
-	
-	@Override
-	public IBaseMessage run(InMessage im, Channel ch){
-		
-		Player player = (Player)ch.getAttachment();
-		
-		UserInfo userInfo = (UserInfo) userInfoService.findByUid(player.getId());
-		
-		if(userInfo == null){
-			OutMessage.showError("初始化失败", 50001);
-		}
-		
-		player.init(userInfo);
-		
-		return OutMessage.showSucc(player);
-	}
+
+    UserInfoService userInfoService = (UserInfoService) ServiceManager.getService(UserInfoService.BEANID);
+
+    @Override
+    public IBaseMessage run(InMessage im, Channel ch) {
+
+        Player player = (Player) ch.getAttachment();
+
+        UserInfo userInfo = (UserInfo) userInfoService.findByUid(player.getId());
+
+        if (userInfo == null) {
+            OutMessage.showError("初始化失败", 50001);
+        }
+
+        player.init(userInfo);
+
+        return OutMessage.showSucc(player);
+    }
 
 }

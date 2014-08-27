@@ -11,10 +11,10 @@ import com.zhaidaosi.game.server.model.area.Area;
 
 public class OnlineUserHandler extends BaseHandler {
 
-	@Override
-	public IBaseMessage run(InMessage im, Channel ch) {
-		Area area = (Area) AreaManager.getArea(Area.ID);
-		return OutMessage.showSucc(area.getPlayers());
-	}
+    @Override
+    public IBaseMessage run(InMessage im, Channel ch) {
+        Area area = (Area) AreaManager.getArea(Area.ID);
+        return OutMessage.showSucc(area.getPlayers());
+    }
 
 }

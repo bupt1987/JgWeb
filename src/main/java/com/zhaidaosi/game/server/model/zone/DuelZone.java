@@ -4,21 +4,21 @@ import com.zhaidaosi.game.jgframework.model.area.BaseZone;
 import com.zhaidaosi.game.server.model.player.Player;
 
 public class DuelZone extends BaseZone {
-	
-	private final static String ZONE_NAME = "DuelZone";
 
-	public DuelZone() {
-		super(ZONE_NAME);
-	}
+    private final static String ZONE_NAME = "DuelZone";
 
-	@Override
-	public void init() {
+    public DuelZone() {
+        super(ZONE_NAME);
+    }
 
-	}
-	
-	public void addPlayer(Player player) {
-		player.sOldPosition(player.gPosition());
-		super.addPlayer(player);
-	}
+    @Override
+    public void init() {
+
+    }
+
+    public void addPlayer(Player player) {
+        player.sOldPosition(player.gPosition());
+        super.addPlayer(player);
+    }
 
 }
