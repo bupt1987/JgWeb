@@ -46,6 +46,6 @@ CREATE TABLE IF NOT EXISTS `user_info` (
   `experience` int(11) NOT NULL,
   `level` int(11) NOT NULL,
   `nickname` varchar(30) NOT NULL,
-  PRIMARY KEY (`uid`),
+  PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
