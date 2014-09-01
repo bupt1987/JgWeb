@@ -17,7 +17,7 @@ public class UserRsync extends BaseRsync {
 
     @Override
     public void runRsync() {
-        UserService service = (UserService) ServiceManager.getService(UserService.BEANID);
+        UserService service = (UserService) ServiceManager.getService(UserService.BEAN_ID);
         for (Map.Entry<Integer, IBaseModel> entry : rsyncMap.entrySet()) {
             User user = (User) entry.getValue();
             service.update(user);

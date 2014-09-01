@@ -16,7 +16,7 @@ import com.zhaidaosi.game.server.sdm.model.UserInfo;
 
 public class UserService extends BaseService {
 
-    public final static String BEANID = "UserService";
+    public final static String BEAN_ID = "userService";
 
     private static BaseLocalCached cached = new BaseLocalCached();
 

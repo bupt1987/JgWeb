@@ -17,7 +17,7 @@ import com.zhaidaosi.game.server.sdm.dao.UserInfoDAO;
 
 public class UserInfoService extends BaseService {
 
-    public final static String BEANID = "UserInfoService";
+    public final static String BEAN_ID = "userInfoService";
 
     @Autowired
     protected UserInfoDAO dao;

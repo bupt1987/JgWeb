@@ -21,7 +21,7 @@ import com.zhaidaosi.game.server.sdm.service.UserService;
 
 public class LoginHandler extends BaseHandler {
 
-    UserService userService = (UserService) ServiceManager.getService(UserService.BEANID);
+    UserService userService = (UserService) ServiceManager.getService(UserService.BEAN_ID);
 
     @Override
     public IBaseMessage run(InMessage im, Channel ch) throws Exception {

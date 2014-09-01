@@ -13,7 +13,7 @@ import com.zhaidaosi.game.server.sdm.service.UserInfoService;
 
 public class InitHandler extends BaseHandler {
 
-    UserInfoService userInfoService = (UserInfoService) ServiceManager.getService(UserInfoService.BEANID);
+    UserInfoService userInfoService = (UserInfoService) ServiceManager.getService(UserInfoService.BEAN_ID);
 
     @Override
     public IBaseMessage run(InMessage im, Channel ch) {
