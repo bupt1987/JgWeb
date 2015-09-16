@@ -5,7 +5,7 @@ import com.zhaidaosi.game.server.model.player.Player;
 
 public class DuelZone extends BaseZone {
 
-    private final static String ZONE_NAME = "DuelZone";
+    public final static String ZONE_NAME = "DuelZone";
 
     public DuelZone() {
         super(ZONE_NAME);
