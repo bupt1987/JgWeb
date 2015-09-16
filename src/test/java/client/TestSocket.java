@@ -37,7 +37,7 @@ class MyThread extends Thread {
             AuthResult ar = TestAuth.auth(username, password);
             if (ar != null) {
                 InMessage msg = new InMessage("init");
-                msg.putMember(SessionManager.SERCRET, ar.sercret);
+                msg.putMember(SessionManager.SECRET, ar.sercret);
                 URI uri = new URI(ar.address);
                 BaseSocket serverSocket = BaseSocket.getNewInstance(uri.getHost(), uri.getPort());
 

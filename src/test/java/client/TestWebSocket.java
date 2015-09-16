@@ -24,7 +24,7 @@ public class TestWebSocket {
         MyWebSocketClient ch = new MyWebSocketClient(uri, new Draft_17());
         if (ch.connectBlocking()) {
             InMessage msg = new InMessage("init");
-            msg.putMember(SessionManager.SERCRET, sercret);
+            msg.putMember(SessionManager.SECRET, sercret);
             ch.send(msg.toString());
 
             System.out.println(ch.getMessage());
@@ -44,7 +44,7 @@ public class TestWebSocket {
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
         System.out.println(startTime);
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1000; i < 1100; i++) {
             WebSocketThread t = new WebSocketThread("test" + i, "123456");
             t.start();
             Thread.sleep(10);

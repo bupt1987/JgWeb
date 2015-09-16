@@ -3,14 +3,15 @@ package com.zhaidaosi.game.server.handler;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jboss.netty.channel.Channel;
 
+import com.zhaidaosi.game.jgframework.connector.IBaseConnector;
 import com.zhaidaosi.game.jgframework.handler.BaseHandler;
 import com.zhaidaosi.game.jgframework.message.IBaseMessage;
 import com.zhaidaosi.game.jgframework.message.InMessage;
 import com.zhaidaosi.game.jgframework.message.OutMessage;
 import com.zhaidaosi.game.jgframework.model.area.IBaseArea;
 import com.zhaidaosi.game.server.model.player.Player;
+import io.netty.channel.Channel;
 
 public class SendMsgHandler extends BaseHandler {
 
@@ -21,7 +22,7 @@ public class SendMsgHandler extends BaseHandler {
             return OutMessage.showError("msg 不能为空");
         }
 
-        Player player = (Player) ch.getAttachment();
+        Player player = (Player) ch.attr(IBaseConnector.PLAYER).get();
         IBaseArea area = player.gArea();
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("msg", msg);

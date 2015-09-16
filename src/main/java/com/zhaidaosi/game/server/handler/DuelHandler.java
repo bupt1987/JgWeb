@@ -1,6 +1,6 @@
 package com.zhaidaosi.game.server.handler;
 
-import org.jboss.netty.channel.Channel;
+import com.zhaidaosi.game.jgframework.connector.IBaseConnector;
 
 import com.zhaidaosi.game.jgframework.handler.BaseHandler;
 import com.zhaidaosi.game.jgframework.message.IBaseMessage;
@@ -10,12 +10,13 @@ import com.zhaidaosi.game.jgframework.session.SessionManager;
 import com.zhaidaosi.game.server.model.Duel;
 import com.zhaidaosi.game.server.model.player.Player;
 import com.zhaidaosi.game.server.model.zone.DuelZone;
+import io.netty.channel.Channel;
 
 public class DuelHandler extends BaseHandler {
 
     @Override
     public IBaseMessage run(InMessage im, Channel ch) {
-        Player me = (Player) ch.getAttachment();
+        Player me = (Player) ch.attr(IBaseConnector.PLAYER).get();
         Integer targetId = 0;
         if (im.getMember("uid") != null) {
             targetId = Integer.valueOf((String) im.getMember("uid"));

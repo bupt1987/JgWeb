@@ -1,6 +1,5 @@
 package com.zhaidaosi.game.server.handler.auth;
 
-import org.jboss.netty.channel.Channel;
 
 import com.zhaidaosi.game.jgframework.common.BaseString;
 import com.zhaidaosi.game.jgframework.common.spring.ServiceManager;
@@ -9,6 +8,7 @@ import com.zhaidaosi.game.jgframework.message.IBaseMessage;
 import com.zhaidaosi.game.jgframework.message.InMessage;
 import com.zhaidaosi.game.jgframework.message.OutMessage;
 import com.zhaidaosi.game.server.sdm.service.UserService;
+import io.netty.channel.Channel;
 
 public class RegistHandler extends BaseHandler {
 
@@ -26,12 +26,12 @@ public class RegistHandler extends BaseHandler {
         }
 
         if (userService.findByUserName(username) != null) {
-            return OutMessage.showError("该用户已被注册", 11);
+            return OutMessage.showError("该用户 '" + username + "' 已被注册", 11);
         }
 
         userService.addUser(username, password, nickname);
 
-        return OutMessage.showSucc("succ");
+        return OutMessage.showSucc(username + " 注册成功");
     }
 
 }

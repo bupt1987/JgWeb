@@ -1,8 +1,8 @@
 package com.zhaidaosi.game.server.handler;
 
-import org.jboss.netty.channel.Channel;
 
 import com.zhaidaosi.game.jgframework.common.spring.ServiceManager;
+import com.zhaidaosi.game.jgframework.connector.IBaseConnector;
 import com.zhaidaosi.game.jgframework.handler.BaseHandler;
 import com.zhaidaosi.game.jgframework.message.IBaseMessage;
 import com.zhaidaosi.game.jgframework.message.InMessage;
@@ -10,6 +10,7 @@ import com.zhaidaosi.game.jgframework.message.OutMessage;
 import com.zhaidaosi.game.server.model.player.Player;
 import com.zhaidaosi.game.server.sdm.model.UserInfo;
 import com.zhaidaosi.game.server.sdm.service.UserInfoService;
+import io.netty.channel.Channel;
 
 public class InitHandler extends BaseHandler {
 
@@ -18,7 +19,7 @@ public class InitHandler extends BaseHandler {
     @Override
     public IBaseMessage run(InMessage im, Channel ch) {
 
-        Player player = (Player) ch.getAttachment();
+        Player player = (Player) ch.attr(IBaseConnector.PLAYER).get();
 
         UserInfo userInfo = (UserInfo) userInfoService.findByUid(player.getId());
 
