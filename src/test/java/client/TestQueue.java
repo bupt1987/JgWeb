@@ -20,9 +20,8 @@ public class TestQueue {
 //			queue.remove(list.get(i));
 //		}
 
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            queue.remove(list.get(i));
+        for (BaseQueueElement<Integer> aList : list) {
+            queue.remove(aList);
         }
 
 //		for (int i = 0; i < 10000000; i++) {

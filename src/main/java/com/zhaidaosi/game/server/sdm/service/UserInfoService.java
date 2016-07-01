@@ -36,8 +36,8 @@ public class UserInfoService extends BaseService {
     }
 
     public static String getDefaultActions() {
-        Map<Integer, Integer> actions = new HashMap<Integer, Integer>();
-        actions.put(AttackAction.ID, 1);
+        Map<String, Integer> actions = new HashMap<>();
+        actions.put(Integer.toString(AttackAction.ID), 1);
         return BaseJson.ObjectToJson(actions);
     }
 

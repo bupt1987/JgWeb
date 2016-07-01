@@ -7,8 +7,8 @@ import java.util.HashMap;
 public class TestRegist {
 
     public static void main(String[] args) throws Exception {
-        for (int i = 10000; i <= 100000; i++) {
-            HashMap<String, Object> params = new HashMap<String, Object>();
+        for (int i = 10000; i <= 11000; i++) {
+            HashMap<String, Object> params = new HashMap<>();
             params.put("username", "test" + i);
             params.put("password", "123456");
             params.put("nickname", "测试" + i + "号");

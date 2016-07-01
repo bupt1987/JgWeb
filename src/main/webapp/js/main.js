@@ -1,4 +1,4 @@
-var socket, sercret;
+var socket, secret;
 var sended = 0;
 var player = null;
 var pk_player_me_id = "";
@@ -7,7 +7,7 @@ var auth_url = "http://localhost:18080";
 
 function initSocket(rs) {
 	sended = 0;
-	sercret = rs.result.sercret;
+	secret = rs.result.secret;
 	if (!window.WebSocket) {
 		window.WebSocket = window.MozWebSocket;
 	}
@@ -16,7 +16,7 @@ function initSocket(rs) {
 			open : function(event) {
 				$("#responseText").val("");
 				socket.send("init", {
-					sercret : sercret
+					secret : secret
 				});
 			},
 			close : function(event) {

@@ -23,7 +23,7 @@ public class Player extends BasePlayer {
 
     private UserInfo userInfo;
     private BasePosition oldPosition;
-    private Map<Integer, Integer> actionJson = new HashMap<>();
+    private Map<String, Integer> actionJson = new HashMap<>();
 
     static {
         levelExperience.put(1, 100);
@@ -42,8 +42,8 @@ public class Player extends BasePlayer {
 
         actionJson = BaseJson.JsonToObject(userInfo.getActions(), Map.class);
 
-        for (Map.Entry<Integer, Integer> entry : actionJson.entrySet()) {
-            AttackAction attackAction = (AttackAction) ActionManager.getAction(entry.getKey());
+        for (Map.Entry<String, Integer> entry : actionJson.entrySet()) {
+            AttackAction attackAction = (AttackAction) ActionManager.getAction(Integer.parseInt(entry.getKey()));
             attackAction.setLevel(entry.getValue());
             this.addAction(attackAction);
         }
@@ -64,7 +64,7 @@ public class Player extends BasePlayer {
                 IBaseAction action = entry.getValue();
                 if (action instanceof AttackAction) {
                     ((AttackAction) action).setLevel(level);
-                    actionJson.put(action.getId(), level);
+                    actionJson.put(Integer.toString(action.getId()), level);
                 }
                 userInfo.setActions(BaseJson.ObjectToJson(actionJson));
             }
