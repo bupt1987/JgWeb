@@ -34,7 +34,6 @@ public class TestWebSocket {
             for (int i = 0; i < 1000000; i++) {
                 ch.send(msg.toString());
             }
-
             ch.closeBlocking();
         }
         long endTime = System.currentTimeMillis();
