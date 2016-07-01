@@ -31,7 +31,7 @@ public class TestWebSocket {
 
             msg = new InMessage("test.test");
             msg.putMember("msg", "test");
-            for (int i = 0; i < 1000000; i++) {
+            for (int i = 0; i < 1000; i++) {
                 ch.send(msg.toString());
             }
             ch.closeBlocking();
@@ -43,7 +43,7 @@ public class TestWebSocket {
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
         System.out.println(startTime);
-        for (int i = 10000; i < 13000; i++) {
+        for (int i = 10000; i < 11000; i++) {
             WebSocketThread t = new WebSocketThread("test" + i, "123456");
             t.start();
             Thread.sleep(10);
