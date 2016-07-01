@@ -8,8 +8,8 @@ import java.util.HashMap;
 
 public class TestAuth {
 
-    public static AuthResult auth(String username, String password) throws Exception {
-        String address, sercret;
+    static AuthResult auth(String username, String password) throws Exception {
+        String address, secret;
         AuthResult re = null;
         HashMap<String, Object> params = new HashMap<String, Object>();
         params.put("username", username);
@@ -18,10 +18,8 @@ public class TestAuth {
         OutMessage om = OutMessage.getMessage(res);
         if (om.getCode() == 0) {
             address = (String) om.getResultValue("address");
-            sercret = (String) om.getResultValue("sercret");
-            re = new AuthResult(address, sercret);
-        } else {
-            return re;
+            secret = (String) om.getResultValue("secret");
+            re = new AuthResult(address, secret);
         }
         return re;
     }
@@ -40,10 +38,10 @@ public class TestAuth {
 
 class AuthThread extends Thread {
 
-    String username;
-    String password;
+    private String username;
+    private String password;
 
-    public AuthThread(String username, String password) {
+    AuthThread(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -51,10 +49,10 @@ class AuthThread extends Thread {
     @Override
     public void run() {
         long startTime = System.currentTimeMillis();
-        HashMap<String, Object> params = new HashMap<String, Object>();
+        HashMap<String, Object> params = new HashMap<>();
         params.put("username", username);
         params.put("password", password);
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 10000; i < 11000; i++) {
             try {
                 BaseHttp.post("http://127.0.0.1:18080/login", params);
             } catch (Exception e) {

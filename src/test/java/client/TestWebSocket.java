@@ -12,26 +12,26 @@ public class TestWebSocket {
 
     private final URI uri;
 
-    private String sercret;
+    private String secret;
 
-    public TestWebSocket(URI uri, String sercret) {
+    TestWebSocket(URI uri, String secret) {
         this.uri = uri;
-        this.sercret = sercret;
+        this.secret = secret;
     }
 
-    public void run() throws Exception {
+    void run() throws Exception {
         long startTime = System.currentTimeMillis();
         MyWebSocketClient ch = new MyWebSocketClient(uri, new Draft_17());
         if (ch.connectBlocking()) {
             InMessage msg = new InMessage("init");
-            msg.putMember(SessionManager.SECRET, sercret);
+            msg.putMember(SessionManager.SECRET, secret);
             ch.send(msg.toString());
 
             System.out.println(ch.getMessage());
 
             msg = new InMessage("test.test");
             msg.putMember("msg", "test");
-            for (int i = 0; i < 100000; i++) {
+            for (int i = 0; i < 1000000; i++) {
                 ch.send(msg.toString());
             }
 
@@ -44,7 +44,7 @@ public class TestWebSocket {
     public static void main(String[] args) throws Exception {
         long startTime = System.currentTimeMillis();
         System.out.println(startTime);
-        for (int i = 1000; i < 1100; i++) {
+        for (int i = 10000; i < 13000; i++) {
             WebSocketThread t = new WebSocketThread("test" + i, "123456");
             t.start();
             Thread.sleep(10);
@@ -54,10 +54,10 @@ public class TestWebSocket {
 
 class WebSocketThread extends Thread {
 
-    String username;
-    String password;
+    private String username;
+    private String password;
 
-    public WebSocketThread(String username, String password) {
+    WebSocketThread(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -67,7 +67,7 @@ class WebSocketThread extends Thread {
         try {
             AuthResult ar = TestAuth.auth(username, password);
             if (ar != null) {
-                new TestWebSocket(new URI(ar.address), ar.sercret).run();
+                new TestWebSocket(new URI(ar.address), ar.secret).run();
             }
         } catch (Exception e) {
             e.printStackTrace();

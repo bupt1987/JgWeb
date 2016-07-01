@@ -70,7 +70,7 @@ class MaxUserThread extends Thread {
         try {
             AuthResult ar = TestAuth.auth(username, password);
             if (ar != null) {
-                new TestMaxUser(new URI(ar.address), ar.sercret).run();
+                new TestMaxUser(new URI(ar.address), ar.secret).run();
             }
         } catch (Exception e) {
             e.printStackTrace();

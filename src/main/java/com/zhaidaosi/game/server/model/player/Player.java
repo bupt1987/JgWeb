@@ -19,11 +19,11 @@ import com.zhaidaosi.game.server.sdm.model.UserInfo;
 
 public class Player extends BasePlayer {
 
-    private static Map<Integer, Integer> levelExperience = new HashMap<Integer, Integer>();
+    private static Map<Integer, Integer> levelExperience = new HashMap<>();
 
     private UserInfo userInfo;
     private BasePosition oldPosition;
-    private Map<String, Integer> actionJson = new HashMap<String, Integer>();
+    private Map<Integer, Integer> actionJson = new HashMap<>();
 
     static {
         levelExperience.put(1, 100);
@@ -42,8 +42,8 @@ public class Player extends BasePlayer {
 
         actionJson = BaseJson.JsonToObject(userInfo.getActions(), Map.class);
 
-        for (Map.Entry<String, Integer> entry : actionJson.entrySet()) {
-            AttackAction attackAction = (AttackAction) ActionManager.getAction(Integer.parseInt(entry.getKey()));
+        for (Map.Entry<Integer, Integer> entry : actionJson.entrySet()) {
+            AttackAction attackAction = (AttackAction) ActionManager.getAction(entry.getKey());
             attackAction.setLevel(entry.getValue());
             this.addAction(attackAction);
         }
@@ -52,7 +52,7 @@ public class Player extends BasePlayer {
         area.addPlayer(this);
     }
 
-    public UserInfo gUserInfo() {
+    public UserInfo getUserInfo() {
         return userInfo;
     }
 
@@ -64,7 +64,7 @@ public class Player extends BasePlayer {
                 IBaseAction action = entry.getValue();
                 if (action instanceof AttackAction) {
                     ((AttackAction) action).setLevel(level);
-                    actionJson.put(action.getId() + "", level);
+                    actionJson.put(action.getId(), level);
                 }
                 userInfo.setActions(BaseJson.ObjectToJson(actionJson));
             }

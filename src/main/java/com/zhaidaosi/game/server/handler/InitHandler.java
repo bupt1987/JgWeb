@@ -14,7 +14,7 @@ import io.netty.channel.Channel;
 
 public class InitHandler extends BaseHandler {
 
-    UserInfoService userInfoService = (UserInfoService) ServiceManager.getService(UserInfoService.BEAN_ID);
+    private UserInfoService userInfoService = (UserInfoService) ServiceManager.getService(UserInfoService.BEAN_ID);
 
     @Override
     public IBaseMessage run(InMessage im, Channel ch) {

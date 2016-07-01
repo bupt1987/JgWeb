@@ -2,10 +2,10 @@ package model;
 
 public class AuthResult {
     public String address;
-    public String sercret;
+    public String secret;
 
-    public AuthResult(String address, String sercret) {
+    public AuthResult(String address, String secret) {
         this.address = address;
-        this.sercret = sercret;
+        this.secret = secret;
     }
 }
